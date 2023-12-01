@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+    color: var(--main-color);
+    text-align: center;
+  }
+
+   h1{
+    margin: 0 20px;
+    color: black;
+
+}
+#book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .book-card {
+    border: 3px solid var(--main-color);
+    border-radius: 1em;
+    width: 162px;
+  }
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border: 1px solid #ddd;
+border-radius: 4px;
+padding: 5px;
+width: 150px;
+}
