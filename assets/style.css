@@ -1,30 +1,193 @@
-body {
-    background-color: white;
+:root {
+    --bg-color: black;
+    --main-color: #ffa500;
+    --main-color-transparent: rgba(255, 166, 0, 0.459);
+    --header-font-family: 'Creepster', cursive;
+  }
+  
+  body {
+    background-color: var(--bg-color);
     color: var(--main-color);
     text-align: center;
   }
+  header{
+    width: 100%;
+    height: 50px;
+    background: rgb(38, 39, 38);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ccc;}
 
-   h1{
+
+    #book-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .book-card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+      }
+      
+      /* On mouse-over, add a deeper shadow */
+      .book-card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+      
+  /* Add rounded corners to the top left and the top right corner of the image */
+
+
+   .book-card img {
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .show  {
+    width: 200px;
+    height: 450px;
+    object-fit: center;
+    cursor: pointer;
+  }
+  header{
+    width: 100%;
+    height: 50px;
+    background: rgb(38, 39, 38);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ccc;
+}
+header h1{
     margin: 0 20px;
-    color: black;
+    color: #fff;
 
 }
-#book-container {
+header a {
+    text-decoration: none;
+}
+header form{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    align-items: center;
+}
+#search{
+    width: 230px;
+    height: 30px;
+   
+    outline: none;
+    border-radius: 20px;
+    padding-left: 20px;
+}
+
+  .show > img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
   }
   
-  .book-card {
-    border: 3px solid var(--main-color);
+  /* https://www.w3schools.com/howto/howto_css_modals.asp */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: var(--main-color-transparent); /* Fallback color */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: black;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid black;
     border-radius: 1em;
-    width: 162px;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+
+ 
   }
 
-/* Add rounded corners to the top left and the top right corner of the image */
-img {
-  border: 1px solid #ddd;
-border-radius: 4px;
-padding: 5px;
-width: 150px;
+#log-in {
+    width: 8em;
+    border: 2px solid rgba(255, 166, 0, 0.459);
+    background: #ffe;
+    border-radius: 5px;
+    margin-left :850px;
+    border: 3px solid var(--main-color);
+  
+    max-width: 350px;
 }
+
+#bt {
+  width: 10em;
+  border: 2px solid rgba(255, 166, 0, 0.459);
+  background: #ffe;
+  border-radius: 5px;
+ 
+  border: 3px solid var(--main-color);
+
+  max-width: 500px;
+}
+b {
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+b:hover {
+    color: red;
+    background: #eff;
+}
+
+
+button {
+  
+  border: 2px solid rgba(255, 166, 0, 0.459);
+  background: #ffe;
+  border-radius: 5px;
+ 
+  border: 3px solid var(--main-color);
+
+  max-width: 400px;
+
+}
+input {
+  width: 8em;
+  border: 2px solid rgba(255, 166, 0, 0.459);
+  background: #ffe;
+  border-radius: 5px;
+ 
+  border: 3px solid var(--main-color);
+
+  max-width: 400px;
+
+}
+textarea {
+  border: 3px solid var(--main-color);
+ }
+
+ 
