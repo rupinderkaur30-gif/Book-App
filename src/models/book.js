@@ -3,7 +3,6 @@ static all = []
     constructor(data){
         this.data = data
         this.constructor.all.push(this)
-        console.log(this)
     }
 
 
@@ -20,11 +19,48 @@ static all = []
         main.innerHTML = ""
         const bookContainer = document.createElement("div")
         bookContainer.id = "book-container"
-        main.append(bookContainer)
+        const addBook = document.createElement("button")
+        addBook.innerText = "Add a New Book"
+        addBook.addEventListener("click", this.openBookForm)
+        main.append(bookContainer, addBook)
         this.all.forEach(movie => movie.renderCard())
         bookContainer.addEventListener("click", this.handleIndexClick)
     }
 
+    static openBookForm = () => {
+        modal.main.innerHTML = `
+        <h1>Add Your Book</h1>
+        <form>
+          <label for="title">Title:</label><br>
+          <input type="text" name="title"><br>
+          <label for"imageUrl">Image:</label><br>
+          <input type="text" name="imageUrl"><br>
+          <label for="genre">Genre:</label><br>
+          <input type="text" name="genre"><br>
+          <label for="yearsPublished">yearsPublished:</label><br>
+          <input type="date" name="yearsPublished"><br>
+          <label for="author">Author:</label><br>
+          <input type="text" name="author"><br>
+          <input type="submit" value="Add Book"><br>
+        </form>`
+        modal.main.querySelector("form").addEventListener("submit", this.handleSubmit)
+        modal.open()
+    }
+
+
+    static handleSubmit = (e) => {
+        e.preventDefault()
+        const newBook = {
+            title: e.target.title.value,
+            image_url: e.target.imageUrl.value,
+            genre: e.target.genre.value,
+             years_published: e.target.yearsPublished.value,
+            author: e.target.author.value
+          }
+           api.createBook(newBook).then(book => new Book(book).renderCard())
+           modal.close()
+    }
+ 
     static handleIndexClick = (e) => {
         if (e.target.tagName == "IMG" || e.target.classList.contains("title")){
         const id =  e.target.closest(".book-card").dataset.id
@@ -42,9 +78,14 @@ static all = []
         </p>
         <p>${author}, ${genre}, ${yearsPublished} </p> 
         <button id="goBack">Go Back</button><br> 
+        <button id="deleteButton">Delete Button</button>
       </div>
         `
         document.getElementById("goBack").addEventListener("click", Book.renderIndex)
+        document.getElementById("deleteButton").addEventListener("click", () => {
+          api.destroyBook(id)
+          Book.renderIndex()
+        })
     }
 
     static find = (id) => this.all.find(book => book.data.id == id)
@@ -59,5 +100,7 @@ static all = []
         </p>
         <p>${author}, ${genre}, ${yearsPublished} </p>
       </div>`
+
+    
     }
 }
